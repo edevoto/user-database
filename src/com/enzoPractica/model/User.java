@@ -3,8 +3,12 @@ package com.enzoPractica.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Data
@@ -14,7 +18,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String jobTitle;
-    private List<String> loans;
+    private BigInteger loan;
+    private List<BigInteger> loans;
 
 
     public User(){
@@ -27,6 +32,9 @@ public class User {
         this.jobTitle = in.nextLine();
         this.userId = setStudentId();
         System.out.println("Id: " + userId);
+        System.out.println("How much money you need: ");
+        this.loan = in.nextBigInteger();
+        this.loans = userLoans(loan);
         showInfo();
     }
     private String setStudentId(){
@@ -34,9 +42,12 @@ public class User {
         return "R"+id;
     }
     public String showInfo(){
-       return firstName + " " + lastName  + " " + userId;
+       String info = firstName + " " + lastName  + " " + userId + " " + "Your debt is: "+loans.stream().collect(Collectors.toList());
+        return info;
     }
-    public List<String> userLoans(String loan){
-
+    public List<BigInteger> userLoans(BigInteger loan){
+        List<BigInteger> loanList = new ArrayList<>();
+        loanList.add(loan);
+        return loanList;
     }
 }
