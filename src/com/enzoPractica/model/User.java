@@ -13,11 +13,8 @@ public class User {
     private static int id = 000000;
     private String firstName;
     private String lastName;
-    private String seniority;
-    private String job;
-    private List<String> courses;
-    private int tuitionBalance;
-    public int costOfCourse = 600;
+    private String jobTitle;
+    private List<String> loans;
 
 
     public User(){
@@ -26,20 +23,20 @@ public class User {
         this.firstName = in.nextLine();
         System.out.println("lastname: ");
         this.lastName = in.nextLine();
-        System.out.println("In wich seniority you are:");
-        this.seniority = in.nextLine();
+        System.out.println("In wich is your job title:");
+        this.jobTitle = in.nextLine();
         this.userId = setStudentId();
         System.out.println("Id: " + userId);
         showInfo();
     }
     private String setStudentId(){
         id++;
-        return "R"+id+seniority;
+        return "R"+id;
     }
     public String showInfo(){
-       return firstName + " " + lastName + " "+seniority + " " + userId;
+       return firstName + " " + lastName  + " " + userId;
     }
-    public List<String> enroll(String course){
+    public List<String> userLoans(String loan){
 
     }
 }
